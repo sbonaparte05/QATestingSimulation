@@ -1,0 +1,26 @@
+// Login Validation Function
+function validateLogin(username, password) {
+  const storedUsername = "admin";
+  const storedPassword = "1234";
+
+  if (!username || !password) {
+    return false; // Missing input check is correct
+  }
+
+  // Check against stored credentials
+  if (username === storedUsername && password === storedPassword) {
+    return true;
+  }
+
+  return false;
+}
+
+// Fixed and Expanded Test Cases
+console.log("Login Test 1 (Valid):", validateLogin("admin", "1234") === true ? "Pass" : "Fail");
+console.log("Login Test 2 (Empty Username):", validateLogin("", "1234") === false ? "Pass" : "Fail");
+// Corrected the logical error: an empty password should return false.
+console.log("Login Test 3 (Empty Password):", validateLogin("admin", "") === false ? "Pass" : "Fail");
+// Added new tests for invalid combinations
+console.log("Login Test 4 (Invalid Username):", validateLogin("user", "1234") === false ? "Pass" : "Fail");
+console.log("Login Test 5 (Invalid Password):", validateLogin("admin", "wrong") === false ? "Pass" : "Fail");
+console.log("Login Test 6 (Both Invalid):", validateLogin("user", "wrong") === false ? "Pass" : "Fail");
